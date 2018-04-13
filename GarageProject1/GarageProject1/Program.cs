@@ -10,6 +10,8 @@ namespace GarageProject1
     {
         static void Main(string[] args)
         {
+            UI ui = new UI();
+            ui.MainMenu();
         }
     }
 }
