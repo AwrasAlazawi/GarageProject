@@ -10,6 +10,9 @@ namespace GarageProject1
     {
         public void MainMenu()
         {
+            Garage<Vehicle> theGarage =
+                        new Garage<Vehicle>(50);
+
             bool keepRunning = true;
 
             while (keepRunning)
@@ -49,8 +52,7 @@ namespace GarageProject1
 
                  void AddVehicle()
                 {
-                    Garage<Vehicle> theGarage =
-                         new Garage<Vehicle>(50);
+                   
 
                     theGarage.ParkVehicle(new Vehicle(1, "Blue", 4));
                     theGarage.ParkVehicle(new Car(5, "Black", 4, 3));
@@ -58,21 +60,13 @@ namespace GarageProject1
                     theGarage.ParkVehicle(new Car(10, "Pink", 4, 3));
                     theGarage.ParkVehicle(new Bus(8, "Green", 8, "diesel"));
                     theGarage.ParkVehicle(new Motorcycle(3, "white", 2, 34));
-
-
-                    var filterdGarage = theGarage.
-                        Where(x => x.NoOfWheels > 2 ||
-                        x.Color == "Red").
-                        OrderBy(x => x.RegNo);
-                      
+                    
 
                     foreach (Vehicle a in theGarage)
                     {
                          Console.WriteLine(a.RegNo + " is " +
                              a.RegNo + "Color " + a.Color + " No of Wheels " +
                              a.NoOfWheels);
-
-                       
                     }
                    
                 }
@@ -80,25 +74,23 @@ namespace GarageProject1
                 void UnParkVehicle()
                 {
 
-                    
-                    AddVehicle();
-
                     Console.WriteLine("If You want to unpark vehicle,");
                     Console.WriteLine("Please, Enter Registartion no of Vehicle");
                     string inputNoasstring = Console.ReadLine();
                     int inputNo;
                     int.TryParse(inputNoasstring, out inputNo);
 
-                    Garage<Vehicle> theGarage =
-                         new Garage<Vehicle>(50);
 
-                    var filterdGarage = from x in theGarage.
-                       Where( > 2 ).
-                       OrderBy(x => x.RegNo);
-                    // theGarage.UnParkVehicle(inputNo);
+                    theGarage.UnParkVehicle(inputNo);
+
+                    var filterdGarage = theGarage.
+                       Where(x => x.NoOfWheels > 2).
+                       OrderBy(x => x.RegNo); 
+
 
                     foreach (Vehicle a in theGarage)
                     {
+                        if(a != null)
                         Console.WriteLine(a.RegNo + " is " +
                             a.RegNo + "Color " + a.Color + " No of Wheels " +
                             a.NoOfWheels);

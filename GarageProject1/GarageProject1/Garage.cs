@@ -47,10 +47,13 @@ namespace GarageProject1
 
         public void UnParkVehicle(int regno)
         {
-            if (vehicle[count].RegNo == regno)
+            for(int i = 0; i< count; i++)
             {
-                vehicle[count] = null;
-                
+            if (vehicle[i].RegNo == regno)
+            {
+                vehicle[i] = null;
+             
+            }
             }
         }
     }
