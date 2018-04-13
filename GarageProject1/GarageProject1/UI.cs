@@ -92,10 +92,9 @@ namespace GarageProject1
                     Garage<Vehicle> theGarage =
                          new Garage<Vehicle>(50);
 
-                    var filterdGarage = from x in theGarage.
-                       Where( > 2 ).
-                       OrderBy(x => x.RegNo);
-                    // theGarage.UnParkVehicle(inputNo);
+                    AddVehicle();
+
+                    theGarage.UnParkVehicle(inputNo);
 
                     foreach (Vehicle a in theGarage)
                     {
