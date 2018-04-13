@@ -19,5 +19,10 @@ namespace GarageProject1
         public int NoOfWheels { get; set; }
         public string Color { get; set; }
 
+        public override string ToString()
+        {
+            Type type = GetType();
+            return GetType().Name;
+        }
     }
 }

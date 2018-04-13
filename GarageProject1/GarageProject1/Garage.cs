@@ -52,8 +52,9 @@ namespace GarageProject1
             if (vehicle[i].RegNo == regno)
             {
                 vehicle[i] = null;
-             
             }
+            else
+                    Console.WriteLine("Invalid RegNo");
             }
         }
     }
