@@ -18,11 +18,13 @@ namespace GarageProject1
             while (keepRunning)
             {
                 Console.Clear();
-                Console.WriteLine("\t\t\tEnter Capcity Of Garage");
+                Console.WriteLine("\t\t\t Garage Application");
                 Console.WriteLine("\t\t\t========================");
-                Console.WriteLine("Bus , Car, Motocycle\n");
+                Console.WriteLine("All List of vehicle");
+                Console.WriteLine("====================");
+                Console.WriteLine(" Bus,\n Car,\n Motocycle,\n");
                 Console.WriteLine("1) Park Vehicle");
-                Console.WriteLine("2) List Vehicle");
+                Console.WriteLine("2)  List​ ​all​ ​vehicle​ ​types​ ​currently​ ​parked​ ​in​ ​the​ ​garage");
                 Console.WriteLine("3) UnPark Vehicle");
                 Console.WriteLine("4) Search vehicle by Color");
                 Console.WriteLine("0) Exit");
@@ -56,20 +58,11 @@ namespace GarageProject1
                Console.Write("\n <PRESS ANY BUTTON TO CONTINUE>");
                 Console.ReadKey();
 
-
-                void ListVehicle()
-                {
-                    foreach (Vehicle a in theGarage)
-                    {
-                        Console.WriteLine(a);
-                    }
-                }
-
                 void AddVehicle()
                 {
                         Console.WriteLine("How many Capacity of Grage:");
                         int capcity = int.Parse(Console.ReadLine());
-                        int regno, noWheels, noOfEng, cylinderV, cap;
+                        int regno, noWheels, noOfEng, cylinderV;
                     string color, fuelType;
                     /*theGarage.ParkVehicle(new Vehicle(1, "Blue", 4));
                 theGarage.ParkVehicle(new Car(5, "Black", 4, 3));
@@ -121,7 +114,7 @@ namespace GarageProject1
                                 theGarage.ParkVehicle(new Motorcycle(regno, color, noWheels, cylinderV));
                                 break;
                         }
- foreach (Vehicle a in theGarage)
+                    foreach (Vehicle a in theGarage)
                     {
                         Console.WriteLine(a.RegNo + " is " +
                             a.RegNo + "Color " + a.Color + " No of Wheels " +
@@ -130,6 +123,16 @@ namespace GarageProject1
                     }
  
                 }
+
+                    void ListVehicle()
+                    {
+                        foreach (Vehicle a in theGarage)
+                        {
+                            Console.WriteLine(a);
+                        }
+                        var countV = theGarage.Count(); 
+                        Console.WriteLine("Count vehicle:  {0}", countV);
+                    }
 
                     void UnParkVehicle()
                     {
