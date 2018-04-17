@@ -53,8 +53,6 @@ namespace GarageProject1
                 {
                     vehicle[i] = null;
                 }
-                else
-                    Console.WriteLine("Invalid RegNo");
             }
         }
         public IEnumerator<T> SearchByColor(string color)
