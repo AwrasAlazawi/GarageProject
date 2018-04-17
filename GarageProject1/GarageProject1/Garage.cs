@@ -47,10 +47,26 @@ namespace GarageProject1
 
         public void UnParkVehicle(int regno)
         {
-            if (vehicle[count].RegNo == regno)
+            for (int i = 0; i < count; i++)
             {
-                vehicle[count] = null;
-                
+                if (vehicle[i].RegNo == regno)
+                {
+                    vehicle[i] = null;
+                }
+                else
+                    Console.WriteLine("Invalid RegNo");
+            }
+        }
+        public IEnumerator<T> SearchByColor(string color)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (vehicle[i].Color == color)
+                {
+                    yield return vehicle[i];
+                }
+                else
+                    Console.WriteLine("There is no Vehicle in this {0}:", color);
             }
         }
     }

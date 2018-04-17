@@ -14,4 +14,6 @@ namespace GarageProject1
         }
         public string FuelType { get; set; }
     }
+
+   
 }
