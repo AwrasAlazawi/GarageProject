@@ -12,6 +12,9 @@ namespace GarageProject1
         {
             bool keepRunning = true;
 
+            Garage<Vehicle> theGarage =
+                           new Garage<Vehicle>(50);
+
             while (keepRunning)
             {
                 Console.Clear();
@@ -27,10 +30,7 @@ namespace GarageProject1
                 try
                 {
                   string input = Console.ReadLine();
-
-                
-                Garage<Vehicle> theGarage =
-                            new Garage<Vehicle>(50);
+               
                 switch (input)
                 {
                     case "1":
@@ -53,8 +53,8 @@ namespace GarageProject1
                         break;
                 }
 
-               //Console.Write("\n <PRESS ANY BUTTON TO CONTINUE>");
-               // Console.ReadKey();
+               Console.Write("\n <PRESS ANY BUTTON TO CONTINUE>");
+                Console.ReadKey();
 
 
                 void ListVehicle()
@@ -121,63 +121,66 @@ namespace GarageProject1
                                 theGarage.ParkVehicle(new Motorcycle(regno, color, noWheels, cylinderV));
                                 break;
                         }
-
-                    }
-
-                    foreach (Vehicle a in theGarage)
+ foreach (Vehicle a in theGarage)
                     {
                         Console.WriteLine(a.RegNo + " is " +
                             a.RegNo + "Color " + a.Color + " No of Wheels " +
                             a.NoOfWheels);
                     }
-
-                }
-
-                void UnParkVehicle()
-                {
-                    Console.WriteLine("If You want to unpark vehicle,");
-                    Console.WriteLine("Please, Enter Registartion no of Vehicle");
-                    string inputNoasstring = Console.ReadLine();
-                    int inputNo;
-                    int.TryParse(inputNoasstring, out inputNo);
-
-
-                    theGarage.UnParkVehicle(inputNo);
-
-                    var filterdGarage = theGarage.
-                       Where(x => x.NoOfWheels > 2).
-                       OrderBy(x => x.RegNo);
-
-
-                    foreach (Vehicle a in theGarage)
-                    {
-                        if (a != null)
-                            Console.WriteLine(a.RegNo + " is " +
-                                a.RegNo + "Color " + a.Color + " No of Wheels " +
-                                a.NoOfWheels);
-
                     }
-
+ 
                 }
 
-                    void SearchByColor()
+                    void UnParkVehicle()
                     {
-                        Console.WriteLine("Please, Enter Color  of Vehicle that you want search on it");
-                        string inputColor = Console.ReadLine();
+                        Console.WriteLine("If You want to unpark vehicle,");
+                        Console.WriteLine("Please, Enter Registartion no of Vehicle");
+                        string inputNoasstring = Console.ReadLine();
+                        int inputNo;
+                        int.TryParse(inputNoasstring, out inputNo);
 
 
-                        theGarage.SearchByColor(inputColor);
+                        theGarage.UnParkVehicle(inputNo);
+
+                        var filterdGarage = theGarage.
+                           Where(x => x.NoOfWheels > 2).
+                           OrderBy(x => x.RegNo);
+
 
                         foreach (Vehicle a in theGarage)
                         {
-                            if (a != null && a.Color == inputColor)
-
+                            if (a != null)
                                 Console.WriteLine(a.RegNo + " is " +
                                     a.RegNo + "Color " + a.Color + " No of Wheels " +
                                     a.NoOfWheels);
 
                         }
                     }
+
+
+                        void SearchByColor()
+                        {
+                            Console.WriteLine("Please, Enter Color  of Vehicle that you want search on it");
+                            string inputColor = Console.ReadLine();
+
+
+                            theGarage.SearchByColor(inputColor);
+
+                            foreach (Vehicle a in theGarage)
+                            {
+                                if (a != null && a.Color == inputColor)
+
+                                    Console.WriteLine(a.RegNo + " is " +
+                                        a.RegNo + "Color " + a.Color + " No of Wheels " +
+                                        a.NoOfWheels);
+                            else Console.WriteLine("There is no Vehicle in this Color");
+
+
+                            }
+                        }
+
+                    
+
                 }
 
                 catch (Exception)
