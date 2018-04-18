@@ -24,7 +24,7 @@ namespace GarageProject1
                 Console.WriteLine("====================");
                 Console.WriteLine(" Bus,\n Car,\n Motocycle,\n");
                 Console.WriteLine("1) Park Vehicle");
-                Console.WriteLine("2)  List​ ​parked​ ​vehicle​");
+                Console.WriteLine("2) List parked vehicle");
                 Console.WriteLine("3) UnPark Vehicle");
                 Console.WriteLine("4) Search vehicle by Color");
                 Console.WriteLine("0) Exit");
