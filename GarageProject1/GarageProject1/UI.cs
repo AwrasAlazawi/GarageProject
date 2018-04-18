@@ -60,7 +60,7 @@ namespace GarageProject1
 
                 void AddVehicle()
                 {
-                        Console.WriteLine("How many Capacity of Grage:");
+                        Console.WriteLine("How many vehicles you want park in Grage:");
                         int capcity = int.Parse(Console.ReadLine());
                         int regno, noWheels, noOfEng, cylinderV;
                     string color, fuelType;
