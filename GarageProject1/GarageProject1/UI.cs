@@ -10,147 +10,201 @@ namespace GarageProject1
     {
         public void MainMenu()
         {
+            
             bool keepRunning = true;
-
-            Garage<Vehicle> theGarage =
-                           new Garage<Vehicle>(50);
 
             while (keepRunning)
             {
+               
                 Console.Clear();
-                Console.WriteLine("\t\t\t Garage Application");
+               Console.WriteLine("\t\t\t Garage Application");
                 Console.WriteLine("\t\t\t========================");
-                Console.WriteLine("All List of vehicle");
-                Console.WriteLine("====================");
-                Console.WriteLine(" Bus,\n Car,\n Motocycle,\n");
-                Console.WriteLine("1) Park Vehicle");
-                Console.WriteLine("2) List parked vehicle");
-                Console.WriteLine("3) UnPark Vehicle");
-                Console.WriteLine("4) Search vehicle by Color");
+               // Console.WriteLine("All List of vehicle");
+               // Console.WriteLine("====================");
+               // Console.WriteLine(" Bus,\n Car,\n Motocycle,\n");
+                Console.WriteLine("1) Create Garage");
                 Console.WriteLine("0) Exit");
 
                 try
                 {
-                  string input = Console.ReadLine();
-               
-                switch (input)
-                {
-                    case "1":
-                        AddVehicle();
-                        break;
-                    case "2":
-                        ListVehicle();
-                        break;
-                    case "3":
-                        UnParkVehicle();
-                        break;
-                        case "4":
-                            SearchByColor();
+
+                    Console.WriteLine("Enter your Choice 1- for Create Garage or 2- Exit");
+                    string inputOne = Console.ReadLine();
+                    switch (inputOne)
+                    {
+                        case "1":
+                            createGarage();
+
                             break;
                         case "0":
-                        keepRunning = false;
-                        break;
-                    default:
-                        Console.WriteLine("Incorrect input");
-                        break;
-                }
+                            keepRunning = false;
+                            break;
+                        default:
+                            Console.WriteLine("Incorrect input");
+                            break;
+                    }
 
-               Console.Write("\n <PRESS ANY BUTTON TO CONTINUE>");
-                Console.ReadKey();
-
-                void AddVehicle()
-                {
-                        Console.WriteLine("How many vehicles you want park in Grage:");
-                        int capcity = int.Parse(Console.ReadLine());
-                        int regno, noWheels, noOfEng, cylinderV;
-                    string color, fuelType;
-                   
-                    for (int i = 0; i < capcity; i++)
+                    void createGarage()
                     {
-                        Console.WriteLine("Enter type of Vehicle");
-                        string typeOfV = Console.ReadLine();
 
-                       switch (typeOfV)
+                        createnewGarage: Console.WriteLine("How many Capcity of Grage:");
+
+                        string capcity = Console.ReadLine();
+                        int capsize;
+                        int.TryParse(capcity, out capsize);
+
+                        Garage<Vehicle> theGarage = new Garage<Vehicle>(capsize);
+
+                        submenu: Console.WriteLine("1) Park Vehicle");
+                        Console.WriteLine("2) List parked vehicle");
+                        Console.WriteLine("3) List parked vehicle");
+                        Console.WriteLine("4) UnPark Vehicle");
+                        Console.WriteLine("5) Search vehicle by Color");
+                        Console.WriteLine("6) Go to Create New Garage");
+
+                        string input = Console.ReadLine();
+
+                        switch (input)
                         {
-                            case "Car":
-                                Console.WriteLine("Enter registration no ");
-                                regno = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Enter color of car");
-                                color = Console.ReadLine();
-                                Console.WriteLine("how many wheels ");
-                                noWheels = int.Parse(Console.ReadLine());
-                                Console.WriteLine("how many Engin ");
-                                noOfEng = int.Parse(Console.ReadLine());
-                                theGarage.ParkVehicle(new Car(regno, color, noWheels, noOfEng));
+                            case "1":
+                                AddVehicle();
+                                goto submenu;
                                 break;
-                            case "Bus":
-                                Console.WriteLine("Enter registration no ");
-                                regno = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Enter color of Bus ");
-                                color = Console.ReadLine();
-                                Console.WriteLine("how many wheels ");
-                                noWheels = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Which fuel Type ");
-                                fuelType = Console.ReadLine();
-                                theGarage.ParkVehicle(new Bus(regno, color, noWheels, fuelType));
+                            case "2":
+                                ListAllVehicle();
+                                goto submenu;
                                 break;
-                            case "Motorcycle":
-                                Console.WriteLine("Enter registration no ");
-                                regno = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Enter color of Motorcycle ");
-                                color = Console.ReadLine();
-                                Console.WriteLine("how many wheels ");
-                                noWheels = int.Parse(Console.ReadLine());
-                                Console.WriteLine("Which Cylider Value  ");
-                                cylinderV = int.Parse(Console.ReadLine());
-                                theGarage.ParkVehicle(new Motorcycle(regno, color, noWheels, cylinderV));
+                            case "3":
+                                ListVehicle();
+                                goto submenu;
+                                break;
+                            case "4":
+                                UnParkVehicle();
+                                goto submenu;
+                                break;
+                            case "5":
+                                SearchByColor();
+                                goto submenu;
+                                break;
+                            case "6":
+                                 goto createnewGarage;
+                                break;
+                            default:
+                                Console.WriteLine("Incorrect input");
                                 break;
                         }
-                    foreach (Vehicle a in theGarage)
-                    {
-                        Console.WriteLine(a.RegNo + " is " +
-                            a.RegNo + "Color " + a.Color + " No of Wheels " +
-                            a.NoOfWheels);
-                    }
-                    }
- 
-                }
 
-                    void ListVehicle()
-                    {
-                        foreach (Vehicle a in theGarage)
+                        Console.Write("\n <PRESS ANY BUTTON TO CONTINUE>");
+                        Console.ReadKey();
+
+                        void AddVehicle()
                         {
-                            Console.WriteLine(a);
+                            Console.WriteLine("How many vehicles you want park in Grage:");
+                            int cap = int.Parse(Console.ReadLine());
+                            int regno, noWheels, noOfEng, cylinderV;
+                            string color, fuelType;
+
+                            for (int i = 0; i < cap; i++)
+                            {
+                                Console.WriteLine("Enter type of Vehicle");
+                                Console.WriteLine("1) Car");
+                                Console.WriteLine("2) Bus");
+                                Console.WriteLine("3) Motorcycle");
+                                addvehicle: string typeOfV = Console.ReadLine();
+
+
+                                switch (typeOfV)
+                                {
+                                    case "1":
+                                        Console.WriteLine("Enter registration no ");
+                                        regno = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Enter color of car");
+                                        color = Console.ReadLine();
+                                        Console.WriteLine("how many wheels ");
+                                        noWheels = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("how many Engin ");
+                                        noOfEng = int.Parse(Console.ReadLine());
+                                        theGarage.ParkVehicle(new Car(regno, color, noWheels, noOfEng));
+                                        break;
+                                    case "2":
+                                        Console.WriteLine("Enter registration no ");
+                                        regno = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Enter color of Bus ");
+                                        color = Console.ReadLine();
+                                        Console.WriteLine("how many wheels ");
+                                        noWheels = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Which fuel Type ");
+                                        fuelType = Console.ReadLine();
+                                        theGarage.ParkVehicle(new Bus(regno, color, noWheels, fuelType));
+                                        break;
+                                    case "3":
+                                        Console.WriteLine("Enter registration no ");
+                                        regno = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Enter color of Motorcycle ");
+                                        color = Console.ReadLine();
+                                        Console.WriteLine("how many wheels ");
+                                        noWheels = int.Parse(Console.ReadLine());
+                                        Console.WriteLine("Which Cylider Value  ");
+                                        cylinderV = int.Parse(Console.ReadLine());
+                                        theGarage.ParkVehicle(new Motorcycle(regno, color, noWheels, cylinderV));
+                                        break;
+
+                                    default:
+                                        Console.WriteLine("Incorrect input should choice number of type");
+                                        goto addvehicle;
+                                        break;
+                                }
+
+                            }
+
                         }
-                        var countV = theGarage.Count(); 
-                        Console.WriteLine("Count vehicle:  {0}", countV);
-                    }
+                        //1
 
-                    void UnParkVehicle()
-                    {
-                        Console.WriteLine("If You want to unpark vehicle,");
-                        Console.WriteLine("Please, Enter Registartion no of Vehicle");
-                        string inputNoasstring = Console.ReadLine();
-                        int inputNo;
-                        int.TryParse(inputNoasstring, out inputNo);
-
-
-                        theGarage.UnParkVehicle(inputNo);
-
-                        var filterdGarage = theGarage.
-                           Where(x => x.NoOfWheels > 2).
-                           OrderBy(x => x.RegNo);
-
-
-                        foreach (Vehicle a in theGarage)
+                        void ListAllVehicle()
                         {
-                            if (a != null)
+                            foreach (Vehicle a in theGarage)
+                            {
                                 Console.WriteLine(a.RegNo + " is " +
-                                    a.RegNo + "Color " + a.Color + " No of Wheels " +
+                                    a.RegNo + "Color:  " + a.Color + " No of Wheels:  " +
                                     a.NoOfWheels);
-
+                            }
                         }
-                    }
+
+                        void ListVehicle()
+                        {
+                            foreach (Vehicle a in theGarage)
+                            {
+                                Console.WriteLine(a);
+                            }
+                            var countV = theGarage.Count();
+                            Console.WriteLine("Count vehicle:  {0}", countV);
+                        }
+
+                        void UnParkVehicle()
+                        {
+                            Console.WriteLine("If You want to unpark vehicle,");
+                            Console.WriteLine("Please, Enter Registartion no of Vehicle");
+                            string inputNoasstring = Console.ReadLine();
+                            int inputNo;
+                            int.TryParse(inputNoasstring, out inputNo);
+
+
+                            theGarage.UnParkVehicle(inputNo);
+
+                            var filterdGarage = theGarage.
+                               Where(x => x.NoOfWheels > 2).
+                               OrderBy(x => x.RegNo);
+
+
+                            foreach (Vehicle a in theGarage)
+                            {
+                                if (a != null)
+                                    Console.WriteLine(a.RegNo + " is " +
+                                        a.RegNo + "Color " + a.Color + " No of Wheels " +
+                                        a.NoOfWheels);
+
+                            }
+                        }
 
 
                         void SearchByColor()
@@ -168,14 +222,13 @@ namespace GarageProject1
                                     Console.WriteLine(a.RegNo + " is " +
                                         a.RegNo + "Color " + a.Color + " No of Wheels " +
                                         a.NoOfWheels);
-                            else Console.WriteLine("There is no Vehicle in this Color");
-
-
+                                else Console.WriteLine("There is no Vehicle in this Color");
                             }
                         }
 
-                    
 
+
+                    }
                 }
 
                 catch (Exception)
@@ -183,10 +236,10 @@ namespace GarageProject1
 
                     Console.WriteLine("Invalid Input"); ;
                 }
-               
-
 
             }
+
+        
         }
     }
         }

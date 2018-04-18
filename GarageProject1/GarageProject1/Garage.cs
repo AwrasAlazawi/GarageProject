@@ -62,6 +62,7 @@ namespace GarageProject1
                 if (vehicle[i].Color == color)
                 {
                     yield return vehicle[i];
+                    break;
                 }
                 else
                     Console.WriteLine("There is no Vehicle in this {0}:", color);
