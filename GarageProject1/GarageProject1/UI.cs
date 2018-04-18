@@ -64,15 +64,7 @@ namespace GarageProject1
                         int capcity = int.Parse(Console.ReadLine());
                         int regno, noWheels, noOfEng, cylinderV;
                     string color, fuelType;
-                    /*theGarage.ParkVehicle(new Vehicle(1, "Blue", 4));
-                theGarage.ParkVehicle(new Car(5, "Black", 4, 3));
-                theGarage.ParkVehicle(new Bus(6, "Red", 8, "diesel"));
-                theGarage.ParkVehicle(new Car(10, "Pink", 4, 3));
-                theGarage.ParkVehicle(new Bus(8, "Green", 8, "diesel"));
-                theGarage.ParkVehicle(new Motorcycle(3, "white", 2, 34));*/
-
-                    //Console.WriteLine("How many Vehicle you want to do park:");
-                    //  cap = int.Parse(Console.ReadLine());
+                   
                     for (int i = 0; i < capcity; i++)
                     {
                         Console.WriteLine("Enter type of Vehicle");

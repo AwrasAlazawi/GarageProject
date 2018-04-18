@@ -14,9 +14,9 @@ namespace GarageProject1
 
         T[] vehicle;
         int cap, count;
+
         public Garage(int capacity)
         {
-            
             cap = capacity;
             count = 0;
             vehicle = new T[capacity];
